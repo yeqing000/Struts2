@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project>
+  <container path="com.genuitec.runtime.library/com.genuitec.generic_5.0">
+    <jar-attrs id="data/libraryset/EE_5/javaee.jar">
+      <attribute name="javadoc_location" value="http://java.sun.com/javaee/5/docs/api/"/>
+      <attribute name="source-path-root"/>
+      <attribute name="source-path" value="C:\CodeLife\developerJar\struts-2.5-all\struts-2.5\src\core\src\main\java"/>
+    </jar-attrs>
+  </container>
+</project>

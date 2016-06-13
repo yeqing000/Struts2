@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!--禁止动态方法调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="false"></constant>
+	<!--开发者模式，国际化 -->
+	<constant name="devMode" value="true"></constant>
+	<constant name="struts.custom.i18n.resources" value="app" />
+	<!-- 默认包 -->
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="upload" class="com.imooc.action.FileUploadAction">
+			<result>/jsp/03.jsp</result>
+			<result name="input">/jsp/error.jsp </result>
+			<!--拦截栈 过滤文件类型 最大大小 -->
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/bmp,image/x-png,image/gif,image/jpeg</param>
+				<param name="maxinumSize">2M</param>
+			</interceptor-ref>
+			<!--默认过滤器栈 -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="download" class="com.imooc.action.DownloadAction">
+			<!-- 可以设置默认的下载文件 -->
+			<param name="inputPath">/images/img3-lg.jpg</param>
+			<result name="success" type="stream">
+				<!-- 类型 输入流 附件 缓冲 -->
+				<param name="contentType">application/octet-stream</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename="${downloadFileName}"</param>
+				<param name="bufferSize">8192</param>
+			</result>
+		</action>
+
+	</package>
+
+
+</struts>
